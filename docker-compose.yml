@@ -1,0 +1,9 @@
+version: "3.6"
+
+services:
+  java:
+    image: eclipse-temurin:11
+    tty: true
+    volumes:
+      - ./:/java_studies:Z
+    working_dir: /java_studies

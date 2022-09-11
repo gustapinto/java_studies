@@ -1,0 +1,14 @@
+{
+  "name": "Java",
+  "dockerComposeFile": [
+    "./docker-compose.yml"
+  ],
+  "service": "java",
+  "workspaceFolder": "/java_studies",
+  "runServices": [
+    "java"
+  ],
+  "extensions": [
+    "redhat.java"
+  ]
+}
