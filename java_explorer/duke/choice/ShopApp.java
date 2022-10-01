@@ -3,7 +3,6 @@ package java_explorer.duke.choice;
 public class ShopApp {
 
     public static void main(String[] args) {
-        final double TAX = 0.2;
         double total = 0.0;
 
         System.out.println("Welcome to Duke Choice Shop");
@@ -13,23 +12,49 @@ public class ShopApp {
          * explicito, ex: quando estamos instanciado um novo objeto
         */
         var c1 = new Costumer();
-        c1.name = "Pinky";
+        c1.setName("Pinky");
+        c1.setSize(3);
 
-        System.out.println("Costumer is " + c1.name);
+        System.out.println("Costumer is " + c1.getName());
 
         var item1 = new Clothing();
-        item1.description = "Blue Jacket";
-        item1.price = 20.9;
+        item1.setDescription("Blue Jacket");
+        item1.setPrice(20.9);
 
         var item2 = new Clothing();
-        item2.description = "Orange T-Shirt";
-        item2.price = 10.5;
-        item2.size = "S";
+        item2.setDescription("Orange T-Shirt");
+        item2.setPrice(10.5);
+        item2.setSize("S");
 
-        System.out.println("Item 1," + item1.asCommaDelimitedText());
-        System.out.println("Item 2," + item2.asCommaDelimitedText());
+        var item3 = new Clothing();
+        item3.setDescription("Green Scarf");
+        item3.setPrice(5);
+        item3.setSize("S");
 
-        total += (2 * item2.price + item1.price) * (1 + TAX);
+        var item4 = new Clothing();
+        item4.setDescription("Blue T-Shirt");
+        item4.setPrice(10.5);
+        item4.setSize("S");
+
+        Clothing[] items = {
+            item1,
+            item2,
+            item3,
+            item4,
+        };
+
+        for (Clothing item : items) {
+            // Apenas adiciona os itens que sirvam para o consumidor
+            if (item.fit(c1)) {
+                System.out.println("Item," + item.asCommaDelimitedText());
+
+                total += item.getPrice();
+            }
+
+            if (total > 15) {
+                break;
+            }
+        }
 
         System.out.println("Total: " + total);
     }
