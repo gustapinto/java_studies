@@ -37,7 +37,7 @@ public class Clothing {
         return this.description + "," + this.price + "," + this.size;
     }
 
-    public boolean fit(Costumer costumer) {
+    public boolean fit(Customer costumer) {
         return this.size.equals(costumer.getSize());
     }
 

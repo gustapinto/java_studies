@@ -9,7 +9,7 @@ public class ShopApp {
          * de tipo, ela pode e dever ser usada quando o tipo da variável for
          * explicito, ex: quando estamos instanciado um novo objeto
         */
-        var c1 = new Costumer();
+        var c1 = new Customer();
         c1.setName("Pinky");
         c1.setSize(3);
 

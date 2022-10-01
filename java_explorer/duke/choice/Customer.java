@@ -1,6 +1,6 @@
 package java_explorer.duke.choice;
 
-public class Costumer {
+public class Customer {
 
     private String name;
     private String size;
