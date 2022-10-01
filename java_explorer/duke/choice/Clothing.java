@@ -6,8 +6,8 @@ public class Clothing {
     private double price;
     private String size = "M";
 
-    private final double MINIMUM_VALUE = 10.0;
-    private final double TAX_RATE = 0.2;
+    public static final double MINIMUM_VALUE = 10.0;
+    public static final double TAX_RATE = 0.2;
 
     public Clothing(String description, double price) {
         /* Utiliza um padrão de sobrecarga de construtores onde os construtors
@@ -46,11 +46,11 @@ public class Clothing {
     }
 
     public double getPrice() {
-        return this.price * (1 + this.TAX_RATE);
+        return this.price * (1 + Clothing.TAX_RATE);
     }
 
     public void setPrice(double newPrice) {
-        this.price = (newPrice < this.MINIMUM_VALUE) ? this.MINIMUM_VALUE : newPrice;
+        this.price = (newPrice < Clothing.MINIMUM_VALUE) ? Clothing.MINIMUM_VALUE : newPrice;
     }
 
     public String getSize() {

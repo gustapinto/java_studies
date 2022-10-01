@@ -53,13 +53,7 @@ public class Customer {
 
         for (Clothing item : this.items) {
             // Apenas soma os itens que sirvam para o consumidor
-            if (item.fit(this)) {
-                total += item.getPrice();
-            }
-
-            if (total > 15) {
-                break;
-            }
+            total += item.getPrice();
         }
 
         return total;
@@ -84,6 +78,10 @@ public class Customer {
         }
 
         return sizeText;
+    }
+
+    public double getAverageClothingCost() throws ArithmeticException, NullPointerException {
+        return this.getTotalClothingCost() / Double.valueOf(this.items.length);
     }
 
 }
