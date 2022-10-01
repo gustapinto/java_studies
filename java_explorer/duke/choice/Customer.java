@@ -6,6 +6,19 @@ public class Customer {
     private String size;
     private Clothing[] items;
 
+    public Customer(String name, int measure) {
+        this.name = name;
+        // Chama o setter dentro do contrutor para garantir que sua regra de
+        // negócio seja seguida
+        this.setSize(measure);
+    }
+
+    // Sobrecarrega o construtor para atuar tanto com ints quanto com Strings
+    public Customer(String name, String size) {
+        this.name = name;
+        this.size = size;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -24,20 +37,7 @@ public class Customer {
 
     // Sobrecarrega um método a partir da mudança dos seus argumentos
     public void setSize(int measure) {
-        switch (measure) {
-            case 1: case 2: case 3:
-                this.size = "S";
-                break;
-            case 4: case 5: case 6:
-                this.size = "M";
-                break;
-            case 7: case 8: case 9:
-                this.size = "L";
-                break;
-            default:
-                this.size = "X";
-                break;
-        }
+        this.size = this.getSizeAsTextFromMeasure(measure);
     }
 
     public Clothing[] getItems() {
@@ -63,6 +63,27 @@ public class Customer {
         }
 
         return total;
+    }
+
+    public String getSizeAsTextFromMeasure(int measure) {
+        String sizeText = "";
+
+        switch (measure) {
+            case 1: case 2: case 3:
+                sizeText = "S";
+                break;
+            case 4: case 5: case 6:
+                sizeText = "M";
+                break;
+            case 7: case 8: case 9:
+                sizeText = "L";
+                break;
+            default:
+                sizeText = "X";
+                break;
+        }
+
+        return sizeText;
     }
 
 }
