@@ -4,6 +4,7 @@ public class Costumer {
 
     private String name;
     private String size;
+    private Clothing[] items;
 
     public String getName() {
         return this.name;
@@ -37,6 +38,31 @@ public class Costumer {
                 this.size = "X";
                 break;
         }
+    }
+
+    public Clothing[] getItems() {
+        return this.items;
+    }
+
+    public void setItems(Clothing[] newItems) {
+        this.items = newItems;
+    }
+
+    public double getTotalClothingCost() {
+        double total = 0.0;
+
+        for (Clothing item : this.items) {
+            // Apenas soma os itens que sirvam para o consumidor
+            if (item.fit(this)) {
+                total += item.getPrice();
+            }
+
+            if (total > 15) {
+                break;
+            }
+        }
+
+        return total;
     }
 
 }

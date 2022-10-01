@@ -3,8 +3,6 @@ package java_explorer.duke.choice;
 public class ShopApp {
 
     public static void main(String[] args) {
-        double total = 0.0;
-
         System.out.println("Welcome to Duke Choice Shop");
 
         /* a keyword var pode ser usada para definir uma variável com inferência
@@ -43,20 +41,14 @@ public class ShopApp {
             item4,
         };
 
-        for (Clothing item : items) {
-            // Apenas adiciona os itens que sirvam para o consumidor
-            if (item.fit(c1)) {
-                System.out.println("Item," + item.asCommaDelimitedText());
+        c1.setItems(items);
 
-                total += item.getPrice();
-            }
-
-            if (total > 15) {
-                break;
-            }
+        for (Clothing item : c1.getItems()) {
+            System.out.println("Item," + item.asCommaDelimitedText());
         }
 
-        System.out.println("Total: " + total);
+
+        System.out.println("Total: " + c1.getTotalClothingCost());
     }
 
 }
