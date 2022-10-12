@@ -1,6 +1,8 @@
 package java_explorer.duke.choice;
 
-public class Clothing {
+// Implementa a interface Comparable<Object> da std lib, essa interface rege como
+// um array do tipo <Clothing>[] será ordenado
+public class Clothing implements Comparable<Clothing> {
 
     private String description;
     private double price;
@@ -61,8 +63,22 @@ public class Clothing {
         this.size = newSize;
     }
 
+    @Override
+    public String toString() {
+        // Sobreescreve o método <Object>.toString para exibir uma formatação
+        // específica quando o objeto for convertido para String ex: em um print
+        return this.asCommaDelimitedText();
+    }
+
+    @Override
+    public int compareTo(Clothing c) {
+        // Implementa o método <Object>.compareTo(<Object>) da interface
+        // Comparable<Object>
+        return this.description.compareTo(c.description);
+    }
+
     public String asCommaDelimitedText() {
-        return this.description + "," + this.price + "," + this.size;
+        return this.getDescription() + ", " + this.getPrice() + ", " + this.getSize();
     }
 
     public boolean fit(Customer costumer) {

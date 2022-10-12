@@ -7,3 +7,5 @@ services:
     volumes:
       - ./:/java_studies:Z
     working_dir: /java_studies
+    ports:
+      - 8888:8888

@@ -1,5 +1,12 @@
 package java_explorer.duke.choice;
 
+import java.net.InetSocketAddress;
+import java.util.Arrays;
+
+import io.helidon.webserver.Routing;
+import io.helidon.webserver.ServerConfiguration;
+import io.helidon.webserver.WebServer;
+
 public class ShopApp {
 
     public static void main(String[] args) {
@@ -25,8 +32,28 @@ public class ShopApp {
 
         c1.setItems(items);
 
+        Arrays.sort(c1.getItems());
+
+        try {
+            ItemList list = new ItemList(c1.getItems());
+
+            Routing router = Routing.builder()
+                .get("/items", list)
+                .build();
+            InetSocketAddress socket = new InetSocketAddress(0);
+            ServerConfiguration config = ServerConfiguration.builder()
+                .bindAddress(socket.getAddress())
+                .port(8888)
+                .build();
+            WebServer server = WebServer.create(config, router);
+
+            server.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         for (Clothing item : c1.getItems()) {
-            System.out.println("Item," + item.asCommaDelimitedText());
+            System.out.println("Item, " + item);
         }
 
         System.out.println();
