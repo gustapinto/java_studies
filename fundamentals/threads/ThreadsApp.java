@@ -8,6 +8,7 @@ import fundamentals.threads.BarRunnable;
 import fundamentals.threads.FooCallable;
 
 public class ThreadsApp {
+
     public static void main(String[] args) throws Exception {
         // Instanciando uma thread que extende a classe Thread
         var fooThread = new FooThread();
@@ -26,8 +27,6 @@ public class ThreadsApp {
         barThread.start();
         barThread.join(); // Espera a thread terminar de executar
 
-        
-
         // Instanciando um callable e usando seu resultado
         var fooFuture = new FutureTask<String>(new FooCallable());
         var fooFutureThread = new Thread(fooFuture);
@@ -37,4 +36,5 @@ public class ThreadsApp {
         // retornado pelo Future, atuando como um "await"
         System.out.println(fooFuture.get());
     }
+
 }
